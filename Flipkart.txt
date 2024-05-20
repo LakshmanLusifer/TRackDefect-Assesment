@@ -1,0 +1,51 @@
+
+
+
+public static void main(String[] args) {
+// TODO Auto-generated method stub
+System.setProperty("webdriver.chrome.driver", "C:\\Program Files\\selenium\\chromedriver.exe");
+WebDriver driver=new ChromeDriver();
+driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+// Launch the URL & Do a Product search
+
+driver.get("https://www.flipkart.com");
+driver.manage().window().maximize();
+wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@title='Search for Products, Brands and More']")));
+  driver.findElement(By.xpath("//div[@class='O8ZS_U']/input")).sendKeys("laptops");
+  driver.findElement(By.xpath("//div[@class='O8ZS_U']/input")).sendKeys(Keys.ENTER);
+  wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@title='HP']//div[@class='_1p7h2j']")));
+  Thread.sleep(1000);
+  driver.findElement(By.xpath("//div[@title='HP']//div[@class='_1p7h2j']")).click();
+
+//Select any product & Add that to the cart
+
+driver.SwitchTo().Window(_driver.WindowHandles.Last());
+    Actions action = new Actions(_driver);
+    WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(45));
+    wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementExists(By.XPath("//button[text()='ADD TO CART']")));
+    action.MoveToElement(additem).Perform();
+    additem.Click();
+
+// Place Order & Login to the application
+
+driver.findElement(By.xpath("//d/html/body/div[1]/div/div[2]/div/div/div[1]/div/div[4]/div/form/button")).click();
+driver.findElement(By.xpath("(//input[@type='text'])[2]")).sendKeys("bhargav@gmail.com");
+driver.findElement(By.xpath("//input[@type='password']")).sendKeys("Bhargav");
+driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
+
+//Select Address & Select Payment option
+
+driver.findElement(By.xpath("(/html/body/div/div/div[2]/div/div[1]/div[2]/div/h3/span[2]")).click();
+driver.findElement(By.xpath("(/html/body/div/div/div[2]/div/div[1]/div[4]/h3")).click();
+
+// Remove the product from the cart
+
+webDriver.navigate().back();
+webDriver.navigate().back();
+
+driver.findElement(By.xpath("(/html/body/div[1]/div/div[1]/div[1]/div[2]/div[6]/div/div/a/span")).click();
+driver.findElement(By.xpath("(/html/body/div[1]/div/div[2]/div/div/div[1]/div/div[3]/div/div[3]/div[2]/div[2]")).click();
+
+driver.close()
+} 
